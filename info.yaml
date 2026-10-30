@@ -21,7 +21,7 @@ documentation:
   how_to_test:  "Reset first (reset also clears the memories, so reset BEFORE loading). Then mode 0 for 16 clocks to load opcodes, mode 1 for 16 clocks to load operands, mode 2 once with the start address on the data pins, then mode 3 and clock to run. See the README for the ISA and a worked example."      # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   external_hw:  "test pattern generator, output reader (will probably work with just an arduino for both)"      # Describe any external hardware needed
   language:     "SystemVerilog" # other examples include Verilog, Amaranth, VHDL, etc
-  doc_link:     "https://github.com/noahgaertner/tt02-verilog-demo/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  doc_link:     "https://github.com/Faltiy/tt02-cpu-demo/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     50000       # Clock frequency in Hz (if required)
   picture:      "docs/pic.png"      # relative path to a picture in your repository
   inputs:               # a description of what the inputs do
