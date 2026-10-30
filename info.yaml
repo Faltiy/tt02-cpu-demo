@@ -1,0 +1,44 @@
+--- 
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+  source_files:        # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. Source files must be in ./src
+    - cpu.sv
+  top_module:  "noahgaertner_cpu"      # put the name of your top module here, make it unique by prepending your github username
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it.
+#
+# Here is an example: https://github.com/mattvenn/tinytapeout_m_segments/blob/main/info.yaml
+#
+# This info will be automatically collected and used to make a datasheet for the chip.
+documentation: 
+  author:       "Noah Gaertner"      # Your name
+  discord:      "Neptun0-#1146"      # Your discord handle
+  title:        "Basic 4 bit cpu"      # Project title
+  description:  "4-bit accumulator CPU with 16x4 program memory and 16x4 data memory. Does add, subtract, multiply, shifts, conditional jump on an external pin, logical and bitwise AND/OR, equality and inequality checks, bitwise NOT and logical NOT."      # Short description of what your project does
+  how_it_works: "Two mode pins select between loading the program memory, loading the data memory, setting the program counter, and running. A 4-bit data bus carries opcodes, operands and the start address in. Each opcode at prog[pc] uses data[pc] as its operand. The outputs show the program counter and the accumulator. JUMPTOIF jumps to its operand if input pin 7 was high on the previous clock edge. Reset clears the memories as well as the registers."      # Longer description of how the project works
+  how_to_test:  "Reset first (reset also clears the memories, so reset BEFORE loading). Then mode 0 for 16 clocks to load opcodes, mode 1 for 16 clocks to load operands, mode 2 once with the start address on the data pins, then mode 3 and clock to run. See the README for the ISA and a worked example."      # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  external_hw:  "test pattern generator, output reader (will probably work with just an arduino for both)"      # Describe any external hardware needed
+  language:     "SystemVerilog" # other examples include Verilog, Amaranth, VHDL, etc
+  doc_link:     "https://github.com/noahgaertner/tt02-verilog-demo/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     50000       # Clock frequency in Hz (if required)
+  picture:      "docs/pic.png"      # relative path to a picture in your repository
+  inputs:               # a description of what the inputs do
+    - "clock"
+    - "reset (sync, active high)"
+    - "mode[0]"
+    - "mode[1]"
+    - "data[0]"
+    - "data[1]"
+    - "data[2]"
+    - "data[3] (also the jump condition)"
+  outputs:
+    - "program counter[0]"        # a description of what the outputs do
+    - "program counter[1]"
+    - "program counter[2]"
+    - "program counter[3]"
+    - "accumulator[0]"
+    - "accumulator[1]"
+    - "accumulator[2]"
+    - "accumulator[3]"
